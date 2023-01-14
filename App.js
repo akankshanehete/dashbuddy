@@ -12,9 +12,10 @@ export default function App() {
           colors={["#B9E0FF", "#C4FFF8"]}
           start={[0.1, 0.1]}
           style={styles.linearGradient}>
+    <Image source={require("./assets/logo4.png")} style={styles.logo} />
     <SafeAreaView style={styles.container}>
       
-      <Text>DashBuddy</Text> 
+      <Text style={styles.steelblue}>DashBuddy</Text> 
       
       <StatusBar style="auto" />
       
@@ -38,5 +39,22 @@ const styles = StyleSheet.create({
     opacity: 0.95,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+
+  steelblue: {
+    color: "steelblue",
+    fontSize: "40",
+    position: 'absolute',
+    top: 450
+  },
+
+  logo:{
+    flex: 1,
+    position: 'absolute',
+    top: 250,
+    width: 150,
+    height: 250,
+    resizeMode: 'contain'
+    
   }
 });
