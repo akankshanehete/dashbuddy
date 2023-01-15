@@ -3,9 +3,9 @@ import { StyleSheet, Text, View, SafeAreaView , Image, FlatList} from 'react-nat
 
 const History = ({navigation}) => {
   return (
-    <Text>
-        History
-    </Text>
+    <SafeAreaView>
+    <Text>History</Text>
+    </SafeAreaView>
   )
 }
 

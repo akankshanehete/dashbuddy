@@ -15,16 +15,18 @@ const styles =StyleSheet.create({
     button:{
         height: 40,
         flexDirection: 'row',
-        alignItems: 'centre',
-        justifyContent: 'centre',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom:40,
     },
     text: {
         fontWeight: 'bold',
         fontsize: 16,
         color: '#f1f1f1',
         marginLeft:10,
-        marginTop:5,
-        justifyContent: 'centre'
+        marginTop:15,
+
+        justifyContent: 'center'
     }
 
 })

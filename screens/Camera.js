@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView , Image, FlatList} from 'react-native';
 
-//for camera 
+
 //for camera
 import { Camera, CameraType} from 'expo-camera'
 import * as MediaLibrary from 'expo-media-library'
