@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView , Image, FlatList} from 'react-native';
+import Information from "./Information";
 
 
 //for camera
@@ -7,6 +8,11 @@ import { Camera, CameraType} from 'expo-camera'
 import * as MediaLibrary from 'expo-media-library'
 import { useState, useEffect, useRef } from 'react';
 import Button from '../components/Button';
+
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 const Camerap = ({navigation}) => {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
@@ -30,6 +36,7 @@ const Camerap = ({navigation}) => {
         await MediaLibrary.createAssetAsync(image);
         alert("Picture Saved to Photos.");
         setImage(null);
+        
       }catch(e){
         console.log(e)
       }
@@ -46,6 +53,7 @@ const Camerap = ({navigation}) => {
       }catch(e){
         console.log(e)
       }
+      navigation.navigate('Information');
     }
   }
 
@@ -98,6 +106,13 @@ const Camerap = ({navigation}) => {
         <Button title={'Take A Picture'} icon='camera' onPress={takePicture}/>
         }
       </View>
+      <Stack.Navigator 
+      screenOptions={{
+      headerShown: false
+      }}>
+        <Stack.Screen name="Information" component={Information}  />
+        </Stack.Navigator>
+      
     </View>
   )
 }

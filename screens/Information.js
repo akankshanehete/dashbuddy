@@ -3,9 +3,9 @@ import { StyleSheet, Text, View, SafeAreaView , Image, FlatList} from 'react-nat
 
 const Information = ({navigation}) => {
   return (
-    <View>
+    <SafeAreaView>
     <Text>Information</Text>
-    </View>
+    </SafeAreaView>
   )
 }
 
