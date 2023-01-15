@@ -94,22 +94,14 @@ const App = () => {
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={{
-              
+              // centring Tab Button...
               position: 'absolute',
-              bottom: -60,
-              backgroundColor: 'steelblue',
-              borderRadius: 33,
-              width: 65,
-              height: 65,
-              justifyContent: 'center',
-              alignContent: 'center',
-              marginRight: 30
-              
+              top: 9
             }}>
               <FontAwesome5
-                name="camera" 
-                size={30}
-                color={focused ? 'white' : 'lightblue'}
+                name="camera"
+                size={20}
+                color={focused ? "steelblue" : 'gray'}
               ></FontAwesome5>
             </View>
           )
