@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView , Image, FlatList} from 'react-native';
 
-const Information = () => {
+const Information = ({navigation}) => {
   return (
-    <Text>
-        Information
-    </Text>
+    <View>
+    <Text>Information</Text>
+    </View>
   )
 }
 

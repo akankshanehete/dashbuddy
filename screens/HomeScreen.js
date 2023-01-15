@@ -11,12 +11,13 @@ import Located from './Located';
 import Profile from './Profile';
 import History from './History';
 import Default from './Default';
+import Tabs from '../navigation/tabs';
 
 
 
 const Home = () => {
   console.log("App Executed");
-  const Tab = createBottomTabNavigator();
+  
 
   return (
     // container component for grouping or laying out children
@@ -33,11 +34,9 @@ const Home = () => {
     <Text style={styles.steelblue}>DashBuddy</Text> 
 
     </SafeAreaView>
+    
     </LinearGradient>
-    
 
-    
-  
     
    
   );

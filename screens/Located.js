@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView , Image, FlatList} from 'react-native';
 
-const Located = () => {
+const Located = ({navigation}) => {
   return (
-    <Text>
-      Located
-    </Text>
+    <SafeAreaView>
+    <Text>Located</Text>
+    </SafeAreaView>
   )
 }
 

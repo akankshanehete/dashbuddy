@@ -1,9 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView , Image, FlatList} from 'react-native';
 
-const Profile = () => {
+const Profile = ({navigation}) => {
   return (
+    <SafeAreaView>
     <Text>Profile</Text>
+    </SafeAreaView>
   )
 }
 
