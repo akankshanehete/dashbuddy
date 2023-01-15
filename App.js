@@ -10,6 +10,7 @@ import {NavigationContainer, DefaultTheme} from "@react-navigation/native";
 import Tabs from './navigation/tabs';
 import Default from './screens/Default';
 import Camerap from './screens/Camera';
+import CameraStack from './screens/CameraStack';
 import History from './screens/History';
 import Located from './screens/Located';
 import Profile from './screens/Profile';
@@ -90,7 +91,7 @@ const App = () => {
             }).start();
           }
         })}></Tab.Screen>
-         <Tab.Screen name={"Camera"} component={Camerap} options={{
+         <Tab.Screen name={"Camera"} component={CameraStack} options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={{

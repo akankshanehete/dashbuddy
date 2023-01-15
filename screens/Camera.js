@@ -35,7 +35,9 @@ const Camerap = ({navigation}) => {
       try{
         await MediaLibrary.createAssetAsync(image);
         alert("Picture Saved to Photos.");
+        navigation.navigate('Information', {name: 'Information'});
         setImage(null);
+        
         
       }catch(e){
         console.log(e)
@@ -62,6 +64,7 @@ const Camerap = ({navigation}) => {
   }
   
   return (
+   
     <View style={styles.container}>
       {!image ? 
         <Camera 
@@ -106,14 +109,11 @@ const Camerap = ({navigation}) => {
         <Button title={'Take A Picture'} icon='camera' onPress={takePicture}/>
         }
       </View>
-      <Stack.Navigator 
-      screenOptions={{
-      headerShown: false
-      }}>
-        <Stack.Screen name="Information" component={Information}  />
-        </Stack.Navigator>
+      
       
     </View>
+    
+      
   )
 }
 
