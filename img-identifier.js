@@ -11,9 +11,9 @@ function identifier() {
     });
     axios({
         method: "POST",
-        url: "https://detect.roboflow.com/dh-nsejw/1",
+        url: "",
         params: {
-            api_key: "F6k89Un4sAC6219BXXy2"
+            api_key: ""
         },
         data: image,
         headers: {
@@ -51,12 +51,12 @@ function identifier() {
 
         const options = {
             method: 'POST',
-            url: 'https://api.cohere.ai/generate',
+            url: '',
             headers: {
                 accept: 'application/json',
                 'Cohere-Version': '2022-12-06',
                 'content-type': 'application/json',
-                authorization: 'Bearer DMf44QgExCPKWSWWTJi5Dpec24UzUcvxtJyLuOoY'
+                authorization: ''
             },
             data: {
                 max_tokens: 100,
