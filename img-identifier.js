@@ -1,6 +1,7 @@
 import axios from 'axios';
 import fs from 'fs';
-
+import Apis from './api-keys.js';
+console.log(Apis.roboflow_url);
 function identifier(filename) {
     //const axios = require("axios");
     //const fs = require("fs");
@@ -11,9 +12,9 @@ function identifier(filename) {
     });
     axios({
         method: "POST",
-        url: "",
+        url: Apis.roboflow_url,
         params: {
-            api_key: ""
+            api_key: Apis.roboflow_api_key
         },
         data: image,
         headers: {
@@ -51,12 +52,12 @@ function identifier(filename) {
 
         const options = {
             method: 'POST',
-            url: '',
+            url: Apis.cohere_url,
             headers: {
                 accept: 'application/json',
                 'Cohere-Version': '2022-12-06',
                 'content-type': 'application/json',
-                authorization: ''
+                authorization: Apis.cohere_api_key
             },
             data: {
                 max_tokens: 100,
@@ -70,7 +71,9 @@ function identifier(filename) {
         axios
         .request(options)
         .then(function (response) {
-            return response.data['generations'][0]['text'];
+            const result = response.data['generations'][0]['text'];
+            // use result (ie description of the symbol and user's next steps) here
+            console.log(result);
         })
         .catch(function (error) {
         console.error(error);
@@ -79,7 +82,6 @@ function identifier(filename) {
     .catch(function(error) {
         console.log(error.message);
     });
-
 }
 
 function getSymbol(data) {
@@ -93,8 +95,4 @@ function getSymbol(data) {
     }
 }
 
-function test () {
-    console.log("test");
-}
-//getSymbol();
-identifier();
+identifier("tire-test.png");
