@@ -9,6 +9,8 @@ import * as MediaLibrary from 'expo-media-library'
 import { useState, useEffect, useRef } from 'react';
 import Button from '../components/Button';
 
+import identifier from '../img-identifier';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -34,6 +36,7 @@ const Camerap = ({navigation}) => {
     if(image){
       try{
         await MediaLibrary.createAssetAsync(image);
+        identifier(image);
         alert("Picture Saved to Photos.");
         setImage(null);
         
