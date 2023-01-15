@@ -1,8 +1,10 @@
 import React from 'react';
 import {useState} from 'react';
+import {StatusBar} from 'expo-status-bar';
 import {StyleSheet, Text, View, Image, TouchableOpacity, FlatList, Animated, Dimensions} from 'react-native';
 import {createStackNavigator} from "@react-navigation/stack";
 import {NavigationContainer, DefaultTheme} from "@react-navigation/native";
+
 
 //screen names importing
 import Tabs from './navigation/tabs';
@@ -92,14 +94,22 @@ const App = () => {
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={{
-              // centring Tab Button...
+              
               position: 'absolute',
-              top: 9
+              bottom: -60,
+              backgroundColor: 'steelblue',
+              borderRadius: 33,
+              width: 65,
+              height: 65,
+              justifyContent: 'center',
+              alignContent: 'center',
+              marginRight: 30
+              
             }}>
               <FontAwesome5
                 name="camera" 
-                size={20}
-                color={focused ? "steelblue" : 'gray'}
+                size={30}
+                color={focused ? 'white' : 'lightblue'}
               ></FontAwesome5>
             </View>
           )
@@ -166,7 +176,7 @@ const App = () => {
 
       </Tab.Navigator>
      
-      <Animated.View style={{
+      {/* <Animated.View style={{
         width: getWidth() - 20,
         height: 2,
         backgroundColor: 'red',
@@ -180,7 +190,8 @@ const App = () => {
         ]
       }}>
 
-      </Animated.View>
+      </Animated.View> */}
+
     </NavigationContainer>
   );
 }
@@ -198,6 +209,7 @@ function getWidth() {
 const tabbarstyle ={
   tabBarShowLabel: false,
   tabBarStyle:{paddingVertical: 15,
+    paddingHorizontal: 20,
     borderTopLeftRadius:15,
     borderTopRightRadius:15,
     backgroundColor:'white',
