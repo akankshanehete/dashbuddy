@@ -1,12 +1,12 @@
 import axios from 'axios';
 import fs from 'fs';
 
-function identifier() {
+function identifier(filename) {
     //const axios = require("axios");
     //const fs = require("fs");
     let symbol = null
 
-    const image = fs.readFileSync("tire-test.png", {
+    const image = fs.readFileSync(filename, {
         encoding: "base64"
     });
     axios({
@@ -70,7 +70,7 @@ function identifier() {
         axios
         .request(options)
         .then(function (response) {
-        console.log(response.data);
+            return response.data['generations'][0]['text'];
         })
         .catch(function (error) {
         console.error(error);
