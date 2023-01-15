@@ -1,124 +1,171 @@
-import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView , Image} from 'react-native';
-
-//for camera
-import { Camera, CameraType} from 'expo-camera'
-import * as MediaLibrary from 'expo-media-library'
-import { useState, useEffect, useRef } from 'react';
-import Button from './Button';
-
-// save to local memory
-
-
+import React from 'react'
+import { StatusBar, FlatList, Image, Animated, Text, View, Dimensions, StyleSheet, TouchableOpacity, Easing, SafeAreaViewBase, SafeAreaView, ScrollView } from 'react-native';
+const { width, height } = Dimensions.get('screen');
 
 export default function App() {
-  console.log("App Executed");
-  const [hasCameraPermission, setHasCameraPermission] = useState(null);
-  const [image, setImage] = useState(null);
-  const [type, setType] = useState(Camera.Constants.Type.back);
-  const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
-  const cameraRef = useRef(null);
-
-  // ask for permissions first 
-  useEffect(() => {
-    (async() => {
-      MediaLibrary.requestPermissionsAsync(); // ask for perms to use media lib 
-      const cameraStatus = await Camera.requestCameraPermissionsAsync(); // ask to use camera
-      setHasCameraPermission(cameraStatus.status == 'granted');
-    })();
-  }, [])
-
-  const saveImage = async () => {
-    if(image){
-      try{
-        await MediaLibrary.createAssetAsync(image);
-        alert("Picture Saved!");
-        setImage(null);
-      }catch(e){
-        console.log(e)
-      }
-    }
-  }
-
-
-  const takePicture = async() => {
-    if(cameraRef){
-      try{
-        const data = await cameraRef.current.takePictureAsync();
-        console.log(data);
-        setImage(data.uri);
-      }catch(e){
-        console.log(e)
-      }
-    }
-  }
-
-  if(hasCameraPermission == false){
-    return <Text>No Access To Camera</Text>
-  }
-
   return (
+    <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
+      <SafeAreaView style={{borderBottomColor:'#8d99ae', borderBottomWidth:1}}>
+        <Text style={{fontSize: 35, fontWeight:'500', paddingLeft:15,  fontFamily: 'Yatra-One', color:'steelblue'}}>All History</Text>
 
-    <View style={styles.container}>
-      {!image ? 
-        <Camera 
-          style={styles.camera}
-          type={type}
-          flashMode = {flash}
-          ref={cameraRef}
-        >
-          <View style={{
-            flexDirection:'row',
-            justifyContent: 'space-between',
-            padding: 30,
+      </SafeAreaView>
+        <ScrollView contentContainerStyle={{padding: 5, paddingTop: 15 }} style={{backgroundColor:"#98c1d9"}}>
 
-          }}>
-            <Button icon={'retweet'} onPress={()=>{
-              setType(type === CameraType.back ? CameraType.front : CameraType.back)
-            }}/>
-            <Button icon={'flash'} 
-            color = {flash === Camera.Constants.FlashMode.off ? 'gray' : '#f1f1f1'}
-            onPress = {()=>{
-              setFlash(flash === Camera.Constants.FlashMode.off 
-                ? Camera.Constants.FlashMode.on 
-                : Camera.Constants.FlashMode.off)
-          }}/>
-          </View>
-        </Camera> 
-        :
-        <Image source={{uri:image}} style={styles.camera}/>
-      }
-        
-      <View>
-        {image ?
-        <View style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          paddingHorizontal:60
-        }}>
-          <Button title={'Re-take'} icon='retweet' onPress={()=> setImage(null)} />
-          <Button title={'Save'} icon='check' onPress={saveImage}/>
-        </View>
-        :
-        <Button title={'Take A Picture'} icon='camera' onPress={takePicture}/>
-        }
-      </View>
-    </View>
+          <SafeAreaView style={{flexDirection:'row', padding: 20, marginBottom:20, justifyContent: 'center', 
+            backgroundColor:'white', 
+            borderRadius:12, 
+            shadowColor:'#000', 
+            shadowOffset:{
+              width:1,
+              height:10
+            },
+            shadowOpacity:0.3,
+            shaddowRadius:100}}>
+            <Image source={require("./assets/chk.jpg")} style={{ width:100, height: 100, borderRadius: 20, margin:10}} />
+            <View style={{marginLeft:15, marginTop:10}}>
+              <Text style={{fontSize: 18}}>ID: 40825</Text>
+              <Text style={{fontSize: 18}}>Checked On: 2022/12/03</Text>
+              <Text style={{fontSize: 18}}>Type: Check Engine Warning</Text>
+              <Text style={{fontSize: 20, fontStyle: 'italic', fontStyle: "italic", fontWeight: "700"}}>See Details ➤ </Text>
+            </View>
+          </SafeAreaView>
 
-  );
+          <SafeAreaView style={{flexDirection:'row', padding: 20, marginBottom:20, justifyContent: 'center', 
+            backgroundColor:'white', 
+            borderRadius:12, 
+            shadowColor:'#000', 
+            shadowOffset:{
+              width:1,
+              height:10
+            },
+            shadowOpacity:0.3,
+            shaddowRadius:100}}>
+            <Image source={require("./assets/tire1.jpg")} style={{ width:100, height: 100, borderRadius: 20, margin:10}} />
+            <View style={{marginLeft:15, marginTop:10}}>
+              <Text style={{fontSize: 18}}>ID: 40824</Text>
+              <Text style={{fontSize: 18}}>Checked On: 2022/11/09</Text>
+              <Text style={{fontSize: 18}}>Type: Tire Pressure Warning</Text>
+              <Text style={{fontSize: 20, fontStyle: 'italic',  fontStyle: "italic", fontWeight: "700"}}>See Details ➤ </Text>
+            </View>
+          </SafeAreaView>
+
+          <SafeAreaView style={{flexDirection:'row', padding: 20, marginBottom:20, justifyContent: 'center', 
+            backgroundColor:'white', 
+            borderRadius:12, 
+            shadowColor:'#000', 
+            shadowOffset:{
+              width:1,
+              height:10
+            },
+            shadowOpacity:0.3,
+            shaddowRadius:100}}>
+            <Image source={require("./assets/chk.jpg")} style={{ width:100, height: 100, borderRadius: 20, margin:10}} />
+            <View style={{marginLeft:15, marginTop:10}}>
+              <Text style={{fontSize: 18}}>ID: 40823</Text>
+              <Text style={{fontSize: 18}}>Checked On: 2022/10/26</Text>
+              <Text style={{fontSize: 18}}>Type: Check Engine Warning</Text>
+              <Text style={{fontSize: 20, fontStyle: 'italic',  fontStyle: "italic", fontWeight: "700"}}>See Details ➤ </Text>
+            </View>
+          </SafeAreaView>
+
+          <SafeAreaView style={{flexDirection:'row', padding: 20, marginBottom:20, justifyContent: 'center', 
+            backgroundColor:'white', 
+            borderRadius:12, 
+            shadowColor:'#000', 
+            shadowOffset:{
+              width:1,
+              height:10
+            },
+            shadowOpacity:0.3,
+            shaddowRadius:100}}>
+            <Image source={require("./assets/tire1.jpg")} style={{ width:100, height: 100, borderRadius: 20, margin:10}} />
+            <View style={{marginLeft:15, marginTop:10}}>
+              <Text style={{fontSize: 18}}>ID: 40822</Text>
+              <Text style={{fontSize: 18}}>Checked On: 2022/09/17</Text>
+              <Text style={{fontSize: 18}}>Type: Tire Pressure Warning</Text>
+              <Text style={{fontSize: 20, fontStyle: 'italic', fontStyle: "italic", fontWeight: "700"}}>See Details ➤ </Text>
+            </View>
+          </SafeAreaView>
+
+          <SafeAreaView style={{flexDirection:'row', padding: 20, marginBottom:20, justifyContent: 'center', 
+            backgroundColor:'white', 
+            borderRadius:12, 
+            shadowColor:'#000', 
+            shadowOffset:{
+              width:1,
+              height:10
+            },
+            shadowOpacity:0.3,
+            shaddowRadius:100}}>
+            <Image source={require("./assets/tire1.jpg")} style={{ width:100, height: 100, borderRadius: 20, margin:10}} />
+            <View style={{marginLeft:15, marginTop:10}}>
+              <Text style={{fontSize: 18}}>ID: 40821</Text>
+              <Text style={{fontSize: 18}}>Checked On: 2022/08/11</Text>
+              <Text style={{fontSize: 18}}>Type: Tire Pressure Warning</Text>
+              <Text style={{fontSize: 20, fontStyle: 'italic', fontStyle: "italic", fontWeight: "700"}}>See Details ➤ </Text>
+            </View>
+          </SafeAreaView>
+
+          <SafeAreaView style={{flexDirection:'row', padding: 20, marginBottom:20, justifyContent: 'center', 
+            backgroundColor:'white', 
+            borderRadius:12, 
+            shadowColor:'#000', 
+            shadowOffset:{
+              width:1,
+              height:10
+            },
+            shadowOpacity:0.3,
+            shaddowRadius:100}}>
+            <Image source={require("./assets/chk.jpg")} style={{ width:100, height: 100, borderRadius: 20, margin:10}} />
+            <View style={{marginLeft:15, marginTop:10}}>
+              <Text style={{fontSize: 18}}>ID: 40820</Text>
+              <Text style={{fontSize: 18}}>Checked On: 2022/07/19</Text>
+              <Text style={{fontSize: 18}}>Type: Check Engine Warning</Text>
+              <Text style={{fontSize: 20, fontStyle: 'italic', fontStyle: "italic", fontWeight: "700"}}>See Details ➤ </Text>
+            </View>
+          </SafeAreaView>
+
+          <SafeAreaView style={{flexDirection:'row', padding: 20, marginBottom:20, justifyContent: 'center', 
+            backgroundColor:'white', 
+            borderRadius:12, 
+            shadowColor:'#000', 
+            shadowOffset:{
+              width:1,
+              height:10
+            },
+            shadowOpacity:0.3,
+            shaddowRadius:100}}>
+            <Image source={require("./assets/chk.jpg")} style={{ width:100, height: 100, borderRadius: 20, margin:10}} />
+            <View style={{marginLeft:15, marginTop:10}}>
+              <Text style={{fontSize: 18}}>ID: 40819</Text>
+              <Text style={{fontSize: 18}}>Checked On: 2022/06/21</Text>
+              <Text style={{fontSize: 18}}>Type: Check Engine Warning</Text>
+              <Text style={{fontSize: 20, fontStyle: 'italic', fontStyle: "italic", fontWeight: "700"}}>See Details ➤ </Text>
+            </View>
+          </SafeAreaView>
+
+          <SafeAreaView style={{flexDirection:'row', padding: 20, marginBottom:20, justifyContent: 'center', 
+            backgroundColor:'white', 
+            borderRadius:12, 
+            shadowColor:'#000', 
+            shadowOffset:{
+              width:1,
+              height:10
+            },
+            shadowOpacity:0.3,
+            shaddowRadius:100}}>
+            <Image source={require("./assets/tire1.jpg")} style={{ width:100, height: 100, borderRadius: 20, margin:10}} />
+            <View style={{marginLeft:15, marginTop:10}}>
+              <Text style={{fontSize: 18}}>ID: 40818</Text>
+              <Text style={{fontSize: 18}}>Checked On: 2022/05/01</Text>
+              <Text style={{fontSize: 18}}>Type: Tire Pressure Warning</Text>
+              <Text style={{fontSize: 20, fontStyle: 'italic', fontStyle: "italic", fontWeight: "700"}}>See Details ➤ </Text>
+            </View>
+          </SafeAreaView>
+          
+        </ScrollView>
+    </SafeAreaView>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1, // container is flexible
-    backgroundColor: '#000',
-    justifyContent: 'center',
-    paddingBottom:50,
-  },
 
-  camera: {
-    flex:1,
-    borderRadius:20,
-
-  }
-});
