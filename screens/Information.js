@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, SafeAreaView , Image, FlatList} from 'react-nat
 const Information = ({navigation}) => {
   return (
     <SafeAreaView>
-    <Text>Information</Text>
+    <Text>That is an Engine Light Warning.</Text>
     </SafeAreaView>
   )
 }
